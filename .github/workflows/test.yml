@@ -4,6 +4,7 @@ on:
   push:
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
   workflow_call:
 
 jobs:
@@ -50,12 +51,12 @@ jobs:
         sudo rm -f /bin/clang && sudo ln -s /usr/bin/clang-14 /bin/clang
     - uses: Swatinem/rust-cache@v2.2.0
     - name: Build
-      run: cargo build --locked --verbose --workspace --exclude runqslower
+      run: cargo build --release --locked --verbose --workspace --exclude runqslower
     - name: Run tests
       # Skip BTF & map tests which require sudo
-      run: cargo test --locked --verbose --workspace --exclude runqslower -- --skip test_object --skip test_tc --skip test_map_info --include-ignored
+      run: cargo test --release --locked --verbose --workspace --exclude runqslower -- --skip test_object --skip test_tc --skip test_map_info --include-ignored
     - name: Run BTF tests
-      run: cd libbpf-rs && cargo test --locked --verbose -- test_object test_tc
+      run: cd libbpf-rs && cargo test --release --locked --verbose -- test_object test_tc
 
   build-minimum:
     name: Build using minimum versions of dependencies
