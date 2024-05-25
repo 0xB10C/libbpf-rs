@@ -32,7 +32,8 @@ novendor = ["libbpf-sys/novendor"]
 [dependencies]
 anyhow = "1.0.1"
 cargo_metadata = "0.15.0"
-libbpf-sys = { version = "1.0.3" }
+# libbpf-sys = { version = "1.0.3" }
+libbpf-sys = { git = "https://github.com/0xb10c/libbpf-sys", branch="2024-05-test-aarch64-fix" }
 libbpf-rs = { version = "0.22", path = "../libbpf-rs" }
 memmap2 = "0.5"
 num_enum = "0.5"

@@ -23,7 +23,8 @@ static = ["libbpf-sys/static"]
 [dependencies]
 bitflags = "2.0"
 lazy_static = "1.4"
-libbpf-sys = { version = "1.0.3" }
+libbpf-sys = { git = "https://github.com/0xb10c/libbpf-sys", branch="2024-05-test-aarch64-fix" }
+# libbpf-sys = { version = "1.0.3" }
 libc = "0.2"
 nix = { version = "0.27", default-features = false, features = ["net", "user"] }
 num_enum = "0.5"
